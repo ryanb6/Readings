@@ -32,10 +32,21 @@ page 72
 exampleobject = {
   one: 1,
   two: 2,
-
 }
 
 arr = [1, 2, 3, 4]
 for i in arr:
   arr.unshift(3)
   console.log(arr[i] * 2)
+
+Json, or Javascript Order Notation, is a serialized form of data for transfer.
+{
+  "squirrel": false,
+  "events": ["work", "touched tree", "pizza", "running"]
+}
+
+
+JSON.stringify() takes a javascript value and returns a JSON encoded string
+//js -> Json
+JSON.parse() takes a string and converts it to the value it encodes
+//json -> js
