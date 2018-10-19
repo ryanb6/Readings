@@ -15,3 +15,9 @@
 2. Reverse Arrays
 3. Sum of Ranges
 4. Deep Equal
+
+### Ch. 5 - Higher-Order Functions
+1. Flattening
+2. Your Own Loop
+3. Everything
+4. Dominant Writing Direction 
