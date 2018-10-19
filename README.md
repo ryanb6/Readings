@@ -20,4 +20,6 @@
 1. Flattening
 2. Your Own Loop
 3. Everything
-4. Dominant Writing Direction 
+4. Dominant Writing Direction
+
+### Ch. 6 - More Objects
