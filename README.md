@@ -23,3 +23,7 @@
 4. Dominant Writing Direction
 
 ### Ch. 6 - More Objects
+1. A vector type
+2. Groups
+3. Iterable Groups
+4. Borrowing a method

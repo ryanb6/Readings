@@ -86,14 +86,14 @@ console.log(blackRabbit.teeth); // small
 console.log(Rabbit.prototype.teeth); // small
 
 //this is a map, not to be confused with map()
-let ages = {
+let newages = {
 Boris: 39,
 Liang: 22,
 Júlia: 62
 };
-console.log(`Júlia is ${ages["Júlia"]}`); // 62
-console.log("Is Jack's age known?", "Jack" in ages); // false
-console.log("Is toString's age known?", "toString" in ages); //true
+console.log(`Júlia is ${newages["Júlia"]}`); // 62
+console.log("Is Jack's age known?", "Jack" in newages); // false
+console.log("Is toString's age known?", "toString" in newages); //true
 //toString is true because the Object prototype has toString property
 //this seems a little dangerous, having a prototype like that
 console.log("toString" in Object.create(null)); //false
@@ -137,3 +137,38 @@ let okIterator = "OK"[Symbol.iterator]();
 console.log(okIterator.next()); //{value: "O", done: false}
 console.log(okIterator.next()); //{value: "K", done: false}
 console.log(okIterator.next()); //{value: undefined, done: true}
+
+// getters are interface methods that are defined with a get
+let varyingSize = {
+  get size(){
+    return Math.floor(Math.random() * 100);
+  }
+};
+console.log(varyingSize.size);
+
+class Matrix {
+  constructor(width, height, element = (x, y) => undefined) {
+    this.width = width;
+    this.height = height;
+    this.content = [];
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        this.content[y * width + x] = element(x, y);
+      }
+    }
+  }
+  get(x, y) {
+    return this.content[y * this.width + x];
+  }
+  set(x, y, value) {
+    this.content[y * this.width + x] = value;
+  }
+}
+// methods that have static in front of them are stored with the constructor
+// the syntax extends means that the class shouldnt be based on their default prototype
+// the extended class is the superclass and the derived class is the subclass
+// the subclass uses super() to call the superclass' methods
+// i.e. get and set
+
+// to see if an object is derived from a specific class, use instanceof
+console.log([1] instanceof Array);
