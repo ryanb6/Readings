@@ -164,6 +164,26 @@ class Matrix {
     this.content[y * this.width + x] = value;
   }
 }
+
+class MatrixIterator {
+  constructor(matrix) {
+    this.x = 0;
+    this.y = 0;
+    this.matrix = matrix;
+  }
+  next() {
+    if (this.y == this.matrix.height) return {done: true};
+    let value = {x: this.x,
+                 y: this.y,
+                 value: this.matrix.get(this.x, this.y)};
+    this.x++;
+    if (this.x == this.matrix.width) {
+      this.x = 0;
+      this.y++;
+    }
+  return {value, done: false};
+  }
+}
 // methods that have static in front of them are stored with the constructor
 // the syntax extends means that the class shouldnt be based on their default prototype
 // the extended class is the superclass and the derived class is the subclass
