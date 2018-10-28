@@ -1,5 +1,5 @@
-# Notes and Completed Exercises from the textbook Eloquent Javascript
-## Exercises
+# Notes and Completed Exercises from various readings
+## Eloquent Javascript
 ### Ch. 2 - Program Structure
 1. Chessboard
 2. FizzBuzz
