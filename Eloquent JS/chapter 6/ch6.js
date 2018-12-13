@@ -190,5 +190,7 @@ class MatrixIterator {
 // the subclass uses super() to call the superclass' methods
 // i.e. get and set
 
+//in this chapter we learned about prototypes and matrix iterators
+
 // to see if an object is derived from a specific class, use instanceof
 console.log([1] instanceof Array);
