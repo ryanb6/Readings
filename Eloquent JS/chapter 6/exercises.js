@@ -27,6 +27,8 @@ console.log(vec3);
 console.log(vec1.length);
 // square rot of x2 - x1 sqared + y2 - y1 squared
 
+
+//showing denis
 //Groups
 // to note: array has an 'includes' method that returns a boolean
 // this could be used in place of indexOf
@@ -64,7 +66,7 @@ class GroupIterator(){
     this.group = group;
   }
   next(){
-    
+
   }
 }
 
