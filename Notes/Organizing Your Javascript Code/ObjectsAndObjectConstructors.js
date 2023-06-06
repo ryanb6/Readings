@@ -111,3 +111,15 @@ function Warrior(name, level, weapon){
 Object.setPrototypeOf(Warrior.prototype, Hero.prototype)
 //now Warrior can use Hero.greet()
 
+//notes for Gentle explanation of 'this' in javascript
+//'this' is the instance of the current object in the class method
+
+//function invocation is performed when an expression that evaluates to a function object is followed by an open paren, a comma separated list of arguments expressions and a closed paren
+function hello(name){
+    return 'Hello' + name
+}
+const message = hello('word')
+
+//function invocation cant be a property accessor, which is actually called a method invocation
+[1,5].join(',')
+
