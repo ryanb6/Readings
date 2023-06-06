@@ -57,35 +57,57 @@ console.log(Object.getPrototypeOf(book1) === Book.prototype)
 
 function Person(name) {
     this.name = name
-  }
-  
-  Person.prototype.sayName = function() {
+}
+
+Person.prototype.sayName = function() {
     console.log(`Hello, I'm ${this.name}!`)
-  }
-  
-  function Player(name, marker) {
+}
+
+function Player(name, marker) {
     this.name = name
     this.marker = marker
-  }
-  
-  Player.prototype.getMarker = function() {
+}
+
+Player.prototype.getMarker = function() {
     console.log(`My marker is '${this.marker}'`)
-  }
-  
-  // Object.getPrototypeOf(Player.prototype) should 
-  // return the value of "Person.prototype" instead 
-  // of "Object.prototype"
-  Object.getPrototypeOf(Player.prototype) // returns Object.prototype
-  
-  // Now make `Player` objects inherit from `Person`
-  Object.setPrototypeOf(Player.prototype, Person.prototype)
-  console.log(Object.getPrototypeOf(Player.prototype)) // returns Person.prototype
-  
-  const player1 = new Player('steve', 'X')
-  const player2 = new Player('also steve', 'O')
-  
-  player1.sayName() // Hello, I'm steve!
-  player2.sayName() // Hello, I'm also steve!
-  
-  player1.getMarker() // My marker is 'X'
-  player2.getMarker() // My marker is 'O'
+}
+
+// Object.getPrototypeOf(Player.prototype) should 
+// return the value of "Person.prototype" instead 
+// of "Object.prototype"
+Object.getPrototypeOf(Player.prototype) // returns Object.prototype
+
+// Now make `Player` objects inherit from `Person`
+Object.setPrototypeOf(Player.prototype, Person.prototype)
+console.log(Object.getPrototypeOf(Player.prototype)) // returns Person.prototype
+
+const player1 = new Player('steve', 'X')
+const player2 = new Player('also steve', 'O')
+
+player1.sayName() // Hello, I'm steve!
+player2.sayName() // Hello, I'm also steve!
+
+player1.getMarker() // My marker is 'X'
+player2.getMarker() // My marker is 'O'
+
+//notes from Digital Ocean Prototype Article
+
+//It is common practice in JS to define methods on the prototype for increased efficiency and code readability
+function Hero(name, level){
+    this.name = name
+    this.level = level
+}
+Hero.prototype.greet = function(){
+    return `${this.name} says hello.`
+}
+
+//you can use call() method to copy properties from one constructor to another
+function Warrior(name, level, weapon){
+    //chain constructor with call
+    Hero.call(this, name, level)
+    this.weapon = weapon
+}
+//using call() does not link prototype properties and methods
+Object.setPrototypeOf(Warrior.prototype, Hero.prototype)
+//now Warrior can use Hero.greet()
+
