@@ -1,13 +1,18 @@
 let myLibrary = []
 const btn = document.querySelector('#addBookButton')
 const container = document.querySelector('#bookList')
+const removeBtn = document.querySelector('.remove-button')
 btn.addEventListener('click', addBookToLibrary)
+removeBtn.addEventListener('click', removeBook)
+
+
 
 //book code from written notes
 function Book(title, author, numPages, hasBeenRead){
     this.title = title
     this.author = author
     this.numPages = numPages
+    this.index = null
     this.hasBeenRead = function(){
         if(hasBeenRead == true){
             return("Read!")
@@ -26,6 +31,7 @@ function displayBooks() {
         
         let newBook = document.createElement('div')
         newBook.classList.add('book')
+        newBook.classList.add(`index${myLibrary[i].index}`)
 
         let newBookTitle = document.createElement('h2')
         newBookTitle.textContent = `${myLibrary[i].title}`
@@ -38,10 +44,21 @@ function displayBooks() {
 
         let newBookRead = document.createElement('p')
         newBookRead.textContent = myLibrary[i].hasBeenRead()
+        
+        let removeBook = document.createElement('button')
+        removeBook.classList.add('remove-button')
+        removeBook.textContent = "Remove"
+        removeBook.addEventListener('click', () => {
+            myLibrary.splice(myLibrary.indexOf(i), 1)
+            displayBooks()
+        })
 
+        newBook.appendChild(newBookTitle)
         newBook.appendChild(newBookAuthor)
         newBook.appendChild(newBookPages)
         newBook.appendChild(newBookRead)
+        newBook.appendChild(removeBook)
+
         container.appendChild(newBook)
     }
 }
@@ -54,6 +71,12 @@ function addBookToLibrary(e) {
     let newNumPages = document.querySelector('#num_pages').value
     let newHaveRead = document.querySelector('#have_read').checked
     let newBook = new Book(newTitle, newAuthor, newNumPages, newHaveRead)
+    newBook.index = myLibrary.length
     myLibrary.push(newBook)
     displayBooks()
+}
+
+function removeBook(e) {
+    e.preventDefault()
+
 }
