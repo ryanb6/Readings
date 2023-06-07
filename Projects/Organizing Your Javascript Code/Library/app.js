@@ -24,13 +24,15 @@ myLibrary.push(book2)
 const container = document.querySelector('#bookList')
 function displayBooks() {
     for(let i in myLibrary){
-        let newBook = document.createElement('ul')
-        newBook.textContent = `${myLibrary[i].title}`
-        let newBookAuthor = document.createElement('li')
+        let newBook = document.createElement('div')
+        newBook.classList.add('book')
+        let newBookTitle = document.createElement('h2')
+        newBookTitle.textContent = `${myLibrary[i].title}`
+        let newBookAuthor = document.createElement('p')
         newBookAuthor.textContent = myLibrary[i].author
-        let newBookPages = document.createElement('li')
-        newBookPages.textContent = myLibrary[i].numPages
-        let newBookRead = document.createElement('li')
+        let newBookPages = document.createElement('p')
+        newBookPages.textContent = `Num pages is ${myLibrary[i].numPages}`
+        let newBookRead = document.createElement('p')
         newBookRead.textContent = myLibrary[i].hasBeenRead()
         newBook.appendChild(newBookAuthor)
         newBook.appendChild(newBookPages)
@@ -42,10 +44,11 @@ function displayBooks() {
 
 const btn = document.querySelector('#addBookButton')
 btn.addEventListener('click', function(e) {
+    e.preventDefault()
     let newTitle = document.querySelector('#book_title').value
     let newAuthor = document.querySelector('#book_author').value
     let newNumPages = document.querySelector('#num_pages').value
-    let newHaveRead = document.querySelector('#have_read').value
+    let newHaveRead = document.querySelector('#have_read').checked
     let newBook = new Book(newTitle, newAuthor, newNumPages, newHaveRead)
     myLibrary.push(newBook)
     displayBooks()

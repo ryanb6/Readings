@@ -1,0 +1,50 @@
+.wrapper {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    align-items: center;
+}
+
+.book-form {
+    padding: 20px;
+    background-color: lightgray;
+    border-radius: 20px;
+    width: 300px;
+}
+
+.form-input {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-input-checkbox {
+    display: flex;
+    justify-content: flex-start;
+}
+#have_read {
+    margin-left: 17px;
+}
+.button {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+#bookList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.book {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin:20px;
+    height: 200px;
+    width: 150px;
+    background-color: lightgray;
+    border-radius: 20px;
+}
