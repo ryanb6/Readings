@@ -25,31 +25,28 @@ function Book(title, author, numPages, hasBeenRead){
     }
 }
 
-function displayBooks() {
-    container.innerHTML = ""
-    for(let i in myLibrary){
-        
-        let newBook = document.createElement('div')
+function createBook(item) {
+    let newBook = document.createElement('div')
         newBook.classList.add('book')
-        newBook.classList.add(`index${myLibrary[i].index}`)
+        newBook.classList.add(`index${item.index}`)
 
         let newBookTitle = document.createElement('h2')
-        newBookTitle.textContent = `${myLibrary[i].title}`
+        newBookTitle.textContent = `${item.title}`
 
         let newBookAuthor = document.createElement('p')
-        newBookAuthor.textContent = myLibrary[i].author
+        newBookAuthor.textContent = item.author
 
         let newBookPages = document.createElement('p')
-        newBookPages.textContent = `Num pages is ${myLibrary[i].numPages}`
+        newBookPages.textContent = `Num pages is ${item.numPages}`
 
         let newBookRead = document.createElement('p')
-        newBookRead.textContent = myLibrary[i].hasBeenRead()
+        newBookRead.textContent = item.hasBeenRead()
         
         let removeBook = document.createElement('button')
         removeBook.classList.add('remove-button')
         removeBook.textContent = "Remove"
         removeBook.addEventListener('click', () => {
-            myLibrary.splice(myLibrary.indexOf(i), 1)
+            myLibrary.splice(myLibrary.indexOf(item), 1)
             displayBooks()
         })
 
@@ -60,6 +57,14 @@ function displayBooks() {
         newBook.appendChild(removeBook)
 
         container.appendChild(newBook)
+}
+
+function displayBooks() {
+    container.innerHTML = ""
+    for(let i = 0; i < myLibrary.length; i++){
+        
+        createBook(myLibrary[i])
+        
     }
 }
 

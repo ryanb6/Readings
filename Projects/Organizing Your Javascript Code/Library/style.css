@@ -2,8 +2,11 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    width: 1000px;
+    width: 1020px;
     align-items: center;
+}
+#bookList {
+    width: 1020px;
 }
 
 #book-form {
@@ -32,6 +35,7 @@
 }
 
 #bookList {
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -42,7 +46,6 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 10%;
     line-height: 5px;
     margin:10px;
     padding: 10px;
