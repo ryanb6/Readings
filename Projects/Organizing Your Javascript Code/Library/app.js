@@ -13,13 +13,8 @@ function Book(title, author, numPages, hasBeenRead){
     this.author = author
     this.numPages = numPages
     this.index = null
-    this.hasBeenRead = function(){
-        if(hasBeenRead == true){
-            return("Read!")
-        }else{
-            return("Not read.")
-        }
-    }
+    this.hasBeenRead = hasBeenRead
+    
     this.info = function(){
         return(`${this.title} by ${this.author}, ${this.numPages} pages, ${this.hasBeenRead()}`)
     }
@@ -39,8 +34,17 @@ function createBook(item) {
         let newBookPages = document.createElement('p')
         newBookPages.textContent = `Num pages is ${item.numPages}`
 
-        let newBookRead = document.createElement('p')
-        newBookRead.textContent = item.hasBeenRead()
+        let newBookRead = document.createElement('button')
+        newBookRead.classList.add('read-button')
+        if(item.hasBeenRead === true){
+            newBookRead.textContent = 'Read'
+        }else{
+            newBookRead.textContent = 'Not Read'
+        }
+        newBookRead.addEventListener('click', () => {
+            item.hasBeenRead = !item.hasBeenRead
+            displayBooks()
+        })
         
         let removeBook = document.createElement('button')
         removeBook.classList.add('remove-button')
