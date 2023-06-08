@@ -6,37 +6,51 @@ let computerScore = 0
 
 let playButton = document.querySelector('#play')
 
+function Player(name){
+    this.name = name
+    this.choice = ''
+    this.score = 0
+}
+
+let human = new Player('human')
+let computer = new Player('computer')
+
 playButton.addEventListener('click', () => {
-    let playerChoice = getPlayerChoice()
-    let computerChoice = getComputerChoice()
-
-    
+    human.choice = getPlayerChoice()
+    if(human.choice === 'rock') 
+    computer.choice = getComputerChoice()
     let winner = chooseWinner()
-
-
+    
 })
+
+
 
 function render() {
 
 }
 
-function chooseWinner(playerChoice, computerChoice) {
-    if(playerChoice === computerChoice) return 'tie'
-    if(playerChoice === 'rock' && computerChoice === 'paper'){
+function chooseWinner() {
+    if(human.choice === computer.choice) return 'tie'
+    if(human.choice === 'rock' && computer.choice === 'paper'){
+        computer.score++
         return 'computer'
-    } else if(playerChoice === 'rock' && computerChoice === 'scissors'){
-        return 'player'
-    } else if(playerChoice === 'paper' && computerChoice === 'rock'){
-        return 'player'
-    } else if(playerChoice === 'paper' && computerChoice === 'scissors'){
+    }else if(human.choice === 'rock' && computer.choice === 'scissors'){
+        human.score++
+        return 'human'
+    }else if(human.choice === 'paper' && computer.choice === 'rock'){
+        human.score++
+        return 'human'
+    }else if(human.choice === 'paper' && computer.choice === 'scissors'){
+        computer.score++
         return 'computer'
-    } else if(playerChoice === 'scissors' && computerChoice === 'paper'){
-        return 'player'
-    }else if(playerChoice === 'scissors' && computerChoice === 'rock'){
+    }else if(human.choice === 'scissors' && computer.choice === 'rock'){
+        computer.score++
         return 'computer'
+    }else if(human.choice === 'scissors' && computer.choice === 'paper'){
+        human.score++
+        return 'human'
     }
-
-}
+}   
 
 function getPlayerChoice() {
     if(document.querySelector('scissors-choice').checked){
