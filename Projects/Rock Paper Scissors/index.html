@@ -1,0 +1,33 @@
+<head>
+    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Ultimate RPS showdown</h1>
+        <div class="form">
+            <form id="choice-form" method="post">
+                <label for="scissors-choice">Scissors</label>
+                <input type="checkbox" id="scissors-choice">
+                <label for="rock-choice">Rock</label>
+                <input type="checkbox" id="rock-choice">
+                <label for="paper-choice">Paper</label>
+                <input type="checkbox" id="paper-choice">
+            </form>
+        </div>
+       
+        <button id="play">PLAY!</button>
+        <div class="display">
+            <div class="box human">
+                <img class='human-image' src="">
+                <h2 class="human-choice"></h2>
+                <div class="human-score"></div>
+            </div>
+            <div class="box computer">
+                <img class ='computer-image' src="">
+                <h2 class="computer-choice"></h2>
+                <div class="computer-score"></div>
+            </div>
+        </div>
+    </div>
+</body>
