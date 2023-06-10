@@ -1,9 +1,6 @@
 let humanImage = document.querySelector('.human-image')
 let computerImage = document.querySelector('.computer-image')
 
-let humanScore = 0
-let computerScore = 0
-
 let playButton = document.querySelector('#play')
 
 function Player(name){
@@ -15,11 +12,42 @@ function Player(name){
 let human = new Player('human')
 let computer = new Player('computer')
 
-playButton.addEventListener('click', () => {
+playButton.addEventListener('click', (e) => {
+    e.preventDefault()
     human.choice = getPlayerChoice()
-    if(human.choice === 'rock') 
     computer.choice = getComputerChoice()
-    let winner = chooseWinner()
+    let winner = chooseWinner(human.choice, computer.choice)
+    console.log(winner)
+    switch(human.choice){
+        case 'rock':
+            humanImage.src = 'rock.png'
+            break
+        case 'paper':
+            humanImage.src = 'paper.png'
+            break
+        case 'scissors':
+            humanImage.src = 'scissors.png'
+    }
+    switch(computer.choice){
+        case 'rock':
+            computerImage.src = 'rock.png'
+            break
+        case 'paper':
+            computerImage.src = 'paper.png'
+            break
+        case 'scissors':
+            computerImage.src = 'scissors.png'
+    }
+    if(winner === 'human'){
+        document.querySelector('.winner').innerHTML='Human won!'
+    } else if(winner === 'computer'){
+        document.querySelector('.winner').innerHTML='Computer Won!'
+    } else if (winner === 'tie'){
+        document.querySelector('.winner').innerHTML='Its a tie!'
+    }
+    document.querySelector('.human-score').innerHTML = human.score
+    document.querySelector('.computer-score').innerHTML = computer.score
+    
     
 })
 
@@ -53,13 +81,13 @@ function chooseWinner() {
 }   
 
 function getPlayerChoice() {
-    if(document.querySelector('scissors-choice').checked){
+    if(document.querySelector('#scissors-choice').checked){
         return 'scissors'
     }
-    if(document.querySelector('rock-choice').checked){
+    if(document.querySelector('#rock-choice').checked){
         return 'rock'
     }
-    if(document.querySelector('paper-choice').checked){
+    if(document.querySelector('#paper-choice').checked){
         return 'paper'
     }
 }
