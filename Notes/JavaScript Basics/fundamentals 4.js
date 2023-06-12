@@ -97,3 +97,8 @@ for(let item of arr_t){
 }
 //use for...of loops for arrays
 //for...in loops are used for generic objects
+
+//TDD or test driven development refers to the practice of writing automated tests that described how your code should work
+
+//a fork is a new repository that shares code and visibility settings with the upstream repository
+//you can fork a repo, fix an issue, then submit a pull request to the project owner
